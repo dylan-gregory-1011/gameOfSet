@@ -44,10 +44,10 @@ class SetViewController: UIViewController {
     }
     
     // MARK: - Properties
-    private var gridOfCards: Grid! /// this intializes the grid of cards that allows the cards to be separated on the screen
+    var gridOfCards: Grid! /// this intializes the grid of cards that allows the cards to be separated on the screen
     lazy var animator = UIDynamicAnimator(referenceView: view)
     lazy var cardBehavior = CardBehavior(in: animator) /// The dynamic animator for the card
-    private lazy var game = soloSet() /// initialize the game of set
+    lazy var game = soloSet() /// initialize the game of set
     
     // MARK: - Outlets
     @IBOutlet weak var scoreBoard: UILabel!
@@ -110,8 +110,19 @@ extension SetViewController {
     }
     
     /// gets the matrix size based on the amount of cards
-    private var getMatrixSize: (rows:Int, columns:Int ) {
+    var getMatrixSize: (rows:Int, columns:Int ) {
         let countOfCards: Double = Double(game.faceUpCards.count)
+        var  rows = 11, columns = 2
+        if countOfCards <= 44 && countOfCards>22 {
+            columns =  Int(ceil(countOfCards / 11))
+        } else if countOfCards < 60 && countOfCards > 44 {
+            columns = 4; rows = 15
+        } else if countOfCards > 60 {
+            columns = 5; rows = 16
+        }
+        return (rows, columns)
+        /*
+        New XCode and Swift is having trouble with the UIDevice current orientation
         switch UIDevice.current.orientation {
         case .portrait :
             var  rows = 11, columns = 2
@@ -135,7 +146,7 @@ extension SetViewController {
             return (columns, rows)
         default: break
         }
-        return (0,0)
+        return (0,0)*/
     }
 }
 

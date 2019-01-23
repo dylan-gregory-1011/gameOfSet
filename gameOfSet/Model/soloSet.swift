@@ -10,7 +10,7 @@ import Foundation
 
 // TODO: Comment and re-organize this object
 struct soloSet {
-    private(set) var allCards = [SetCard](), allCardsSplit = [[SetCard]]() , cardsInDeck = [SetCard](), faceUpCards = [SetCard](), selectedCards = [SetCard]()
+    var allCards = [SetCard](), allCardsSplit = [[SetCard]]() , cardsInDeck = [SetCard](), faceUpCards = [SetCard](), selectedCards = [SetCard]()
     
     private(set) var score: Int = 0 
     //try get->set variables for selected cards and face up cards
@@ -94,14 +94,14 @@ extension Array {
     //returns a shuffled array
     func shuffled() -> [Iterator.Element] {
         var list = self
-        list.shuffled()
+        list.shuffle_list()
         return list
     }
 }
 
 extension MutableCollection where Index == Int{
     //shuffles the cards based on the index and makes its way through the array and randomly swaps with swapAt
-    mutating func shuffled() {
+    mutating func shuffle_list() {
         let c = self.count
         guard c > 1 else { return }
         

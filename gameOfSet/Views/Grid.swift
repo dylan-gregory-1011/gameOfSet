@@ -97,7 +97,7 @@ struct Grid
     private var cellCountForAspectRatioLayout = 0 { didSet { recalculate() } }
     private var calculatedDimensions: (rowCount: Int, columnCount: Int) = (0, 0)
     
-    private mutating func recalculate() {
+    mutating func recalculate() {
         switch layout {
         case .fixedCellSize(let cellSize):
             if cellSize.width > 0 && cellSize.height > 0 {
@@ -134,7 +134,7 @@ struct Grid
         }
     }
     
-    private mutating func updateCellFrames(to cellSize: CGSize) {
+    mutating func updateCellFrames(to cellSize: CGSize) {
         cellFrames.removeAll()
         
         let boundingSize = CGSize(
