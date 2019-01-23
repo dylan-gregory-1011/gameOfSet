@@ -94,14 +94,14 @@ extension Array {
     //returns a shuffled array
     func shuffled() -> [Iterator.Element] {
         var list = self
-        list.shuffle()
+        list.shuffled()
         return list
     }
 }
 
 extension MutableCollection where Index == Int{
     //shuffles the cards based on the index and makes its way through the array and randomly swaps with swapAt
-    mutating func shuffle() {
+    mutating func shuffled() {
         let c = self.count
         guard c > 1 else { return }
         

@@ -26,7 +26,6 @@ class ConcentrationViewController: UIViewController {
         cardButtons.forEach {$0.layer.cornerRadius = 3.0 }
         cardButtons.forEach {$0.clipsToBounds = true }
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        print(fileURL)
     }
     
     // MARK: - Properties
